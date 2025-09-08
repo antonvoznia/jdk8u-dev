@@ -611,16 +611,18 @@ JNIEXPORT jobject JNICALL Java_sun_java2d_cmm_lcms_LCMS_getProfileID
     jclass clsLcmsProfile;
     jobject cmmProfile;
     jfieldID fid;
+    jclass pcls;
+    jmethodID mid;
 
     if (pf == NULL) {
         return NULL;
     }
 
-    jclass pcls = (*env)->GetObjectClass(env, pf);
+    pcls = (*env)->GetObjectClass(env, pf);
     if (pcls == NULL) {
         return NULL;
     }
-    jmethodID mid = (*env)->GetMethodID(env, pcls, "activate", "()V");
+    mid = (*env)->GetMethodID(env, pcls, "activate", "()V");
     if (mid == NULL) {
         return NULL;
     }
