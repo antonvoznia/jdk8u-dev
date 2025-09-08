@@ -729,6 +729,7 @@ static cmsBool _getHeaderInfo(cmsHPROFILE pf, jbyte* pBuffer, jint bufferSize)
 static cmsBool _setHeaderInfo(cmsHPROFILE pf, jbyte* pBuffer, jint bufferSize)
 {
   cmsICCHeader pfHeader;
+  cmsUInt64Number attributes;
 
   if (pBuffer == NULL || bufferSize < (jint)sizeof(cmsICCHeader)) {
     return FALSE;
@@ -740,7 +741,6 @@ static cmsBool _setHeaderInfo(cmsHPROFILE pf, jbyte* pBuffer, jint bufferSize)
   cmsSetHeaderFlags(pf, _cmsAdjustEndianess32(pfHeader.flags));
   cmsSetHeaderManufacturer(pf, _cmsAdjustEndianess32(pfHeader.manufacturer));
   cmsSetHeaderModel(pf, _cmsAdjustEndianess32(pfHeader.model));
-  cmsUInt64Number attributes;
   _cmsAdjustEndianess64(&attributes, &pfHeader.attributes);
   cmsSetHeaderAttributes(pf, attributes);
   cmsSetHeaderProfileID(pf, (cmsUInt8Number*)&(pfHeader.profileID));
