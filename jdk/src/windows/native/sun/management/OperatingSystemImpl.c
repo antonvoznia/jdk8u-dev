@@ -50,7 +50,7 @@
 #include <process.h>
 #pragma warning(pop)
 
-#include <sysinfoapi.h>
+#include "sysinfoapi.h"
 
 typedef unsigned __int32 juint;
 typedef unsigned __int64 julong;
